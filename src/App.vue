@@ -1,13 +1,13 @@
 <script>
 import TheHeader from './components/TheHeader.vue';
 import TheFooter from './components/TheFooter.vue';
-import Card from './components/Card.vue';
+import CardList from './components/CardList.vue';
 
 export default {
   components: {
     TheHeader,
     TheFooter,
-    Card
+    CardList
   },
   data() {
     return {
@@ -21,12 +21,16 @@ export default {
 
   <main>
     <div class="container">
-      <div class="input-group mb-4 pt-4">
-        <input type="text" class="form-control" placeholder="Nome o tipo di Carta">
-        <button class="btn btn-outline-dark" type="button">Cerca</button>
+      <div class="dropdown mb-4 pt-4"> <!--PERCHE NON APRE IL DROPDOWN?-->
+        <button class="btn btn-light dropdown-toggle fs-4 fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">Seleziona Tipologia</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
       </div>
       <div class="bg-white">
-        <Card></Card>
+        <CardList></CardList>
       </div>
     </div>
   </main>
@@ -44,5 +48,4 @@ main {
     width: 400px;
   }
 }
-
 </style>

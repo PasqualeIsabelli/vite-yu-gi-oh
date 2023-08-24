@@ -7,7 +7,7 @@ export default {
 </script>
 
 <template>
-  <h1 class="text text-center mt-1">Made by <span class="fw-bold">Pasquale Isabelli </span> Classe #102 Boolean</h1>
+  <h1 class="text text-center">Made by <span class="fw-bold">Pasquale Isabelli </span> Classe #102 Boolean</h1>
 </template>
 
 <style lang="scss" scoped>
