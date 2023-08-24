@@ -2,12 +2,14 @@
 import TheHeader from './components/TheHeader.vue';
 import TheFooter from './components/TheFooter.vue';
 import CardList from './components/CardList.vue';
+import FilterDropdown from './components/FilterDropdown.vue';
 
 export default {
   components: {
     TheHeader,
     TheFooter,
-    CardList
+    CardList,
+    FilterDropdown
   },
   data() {
     return {
@@ -21,14 +23,7 @@ export default {
 
   <main>
     <div class="container">
-      <div class="dropdown mb-4 pt-4"> <!--PERCHE NON APRE IL DROPDOWN?-->
-        <button class="btn btn-light dropdown-toggle fs-4 fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">Seleziona Tipologia</button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </div>
+      <FilterDropdown></FilterDropdown>
       <div class="bg-white">
         <CardList></CardList>
       </div>

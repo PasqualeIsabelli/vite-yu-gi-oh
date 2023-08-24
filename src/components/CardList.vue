@@ -1,10 +1,12 @@
 <script>
-import SingleCard from "./SingleCard.vue"
+import SingleCard from "./SingleCard.vue";
+import Loader from "./Loader.vue";
 import { store, fetchCards } from "../store";
 
 export default {
   components: {
-    SingleCard
+    SingleCard,
+    Loader
   },
   data() {
     return {
@@ -26,6 +28,8 @@ export default {
         </div>
     </div>
   </div>
+
+  <Loader v-if="store.isLoading"></Loader>
 </template>
 
 <style lang="scss" scoped>
