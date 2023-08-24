@@ -2,14 +2,14 @@
 import TheHeader from './components/TheHeader.vue';
 import TheFooter from './components/TheFooter.vue';
 import CardList from './components/CardList.vue';
-import Dropdown from './components/Dropdown.vue';
+import SelectMenu from './components/SelectMenu.vue';
 
 export default {
   components: {
     TheHeader,
     TheFooter,
     CardList,
-    Dropdown
+    SelectMenu
   },
   data() {
     return {
@@ -23,7 +23,8 @@ export default {
 
   <main>
     <div class="container">
-      <Dropdown></Dropdown>
+      <br>
+      <SelectMenu></SelectMenu>
       <div class="bg-white">
         <CardList></CardList>
       </div>
