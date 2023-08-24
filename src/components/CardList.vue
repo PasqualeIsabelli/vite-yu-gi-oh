@@ -13,6 +13,11 @@ export default {
       store
     }
   },
+  methods: {
+    fetchNextPage() {
+      fetchCards(store.paginationInfo.next_page)
+    }
+  },
   mounted() {
     fetchCards();
   }
@@ -27,6 +32,9 @@ export default {
           <SingleCard :card="singleCard"></SingleCard>
         </div>
     </div>
+    <div class="text-center">
+      <button type="button" class="btn mt-5 fw-bold fs-3 px-4" @click="fetchNextPage">Carica altro</button>
+    </div>
   </div>
 
   <Loader v-if="store.isLoading"></Loader>
@@ -34,5 +42,9 @@ export default {
 
 <style lang="scss" scoped>
 @use '../scss/partials/variables' as *;
+
+.btn {
+  background-color: $color-primary;
+}
 
 </style>
