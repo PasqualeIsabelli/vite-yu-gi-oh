@@ -8,12 +8,13 @@ export const store = reactive({
   isLoading: false,
 });
 
-export function fetchCards(nextUrl) {
+export function fetchCards(nextUrl, prevUrl) {
   store.isLoading = true;
 
-  const url = nextUrl ? nextUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
+  const urlNext = nextUrl ? nextUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
+  const urlPrev = prevUrl ? prevUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
 
-  axios.get(url).then((response) => {
+  axios.get(urlNext, urlPrev).then((response) => {
     store.cards = response.data.data;
     store.paginationInfo = response.data.meta;
 
