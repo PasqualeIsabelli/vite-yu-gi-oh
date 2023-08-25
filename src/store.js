@@ -3,10 +3,19 @@ import { reactive } from "vue";
 
 export const store = reactive({
   card: [],
+  archetypes: [],
   paginationInfo: {},
   currentPage: 1,
   isLoading: false,
 });
+
+export function fetchArchetypes () {
+  const urlArche = "https://db.ygoprodeck.com/api/v7/archetypes.php"
+
+  axios.get(urlArche).then((response) => {
+    store.archetypes = response.data;
+  });
+}
 
 export function fetchCards(nextUrl, prevUrl) {
   store.isLoading = true;
