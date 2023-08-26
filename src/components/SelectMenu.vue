@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       store,
+      searchArchetypes: ""
     }
   },
   methods: {
@@ -20,7 +21,7 @@ export default {
 <template>
   <select class="form-select mb-4" aria-label="Default select example" v-model="store.searchArchetypes">
     <option selected>Seleziona Archetipo</option>
-    <option :value="i + 1" v-for="(archetype, i) in store.archetypes" @click="fetchCards(store.searchArchetypes)">{{ archetype.archetype_name }}</option>
+    <option :value="archetype.archetype_name" v-for="archetype in store.archetypes" @click="fetchCards()">{{ archetype.archetype_name }}</option>
   </select>
 </template>
 

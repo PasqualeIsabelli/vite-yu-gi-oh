@@ -7,7 +7,7 @@ export const store = reactive({
   paginationInfo: {},
   currentPage: 1,
   isLoading: false,
-  searchArchetypes: "Seleziona Archetipo"
+  searchArchetypes: ""
 });
 
 export function fetchArchetypes () {
@@ -18,22 +18,26 @@ export function fetchArchetypes () {
   });
 }
 
-export function fetchCards(nextUrl, prevUrl) {
+export function fetchCards(nextUrl) {
   store.isLoading = true;
 
-  const urlNext = nextUrl ? nextUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
-  const urlPrev = prevUrl ? prevUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
+  let urlNext = nextUrl ? nextUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
+  
+  
+  console.log("next_page" + urlNext)
 
-  if (store.searchArchetypes === "Seleziona Archetipo") {
-    const urlNext = nextUrl ? nextUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
-    const urlPrev = prevUrl ? prevUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
+  if (store.searchArchetypes === "") {
+    console.log("if")
+    let urlNext = nextUrl ? nextUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
+    
   } else {
-    const urlNext = nextUrl ? nextUrl : `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.searchArchetypes}&num=20&offset=0`;
-    const urlPrev = prevUrl ? prevUrl : `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.searchArchetypes}&num=20&offset=0`;
+    console.log("else")
+    let urlNext = nextUrl ? nextUrl : `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.searchArchetypes}&num=20&offset=0`;
+    
   }
 
-  axios.get(urlNext, urlPrev).then((response) => {
-    store.cards = response.data.data;
+  axios.get(urlNext).then((response) => {
+    store.card = response.data.data;
     store.paginationInfo = response.data.meta;
 
     setTimeout(() => {
@@ -41,4 +45,3 @@ export function fetchCards(nextUrl, prevUrl) {
     }, 1000);
   });
 }
-

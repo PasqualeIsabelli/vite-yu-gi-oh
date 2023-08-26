@@ -31,7 +31,7 @@ export default {
   <div class="p-5">
     <div class="bg-dark text-white p-3 mb-3 fw-bold fs-4">Found __ results</div>
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
-        <div class="col" v-for="singleCard in store.cards" :key="singleCard.id">
+        <div class="col" v-for="singleCard in store.card" :key="singleCard.id">
           <SingleCard :card="singleCard"></SingleCard>
         </div>
     </div>
