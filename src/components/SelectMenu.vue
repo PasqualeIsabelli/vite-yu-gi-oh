@@ -1,5 +1,5 @@
 <script>
-import { store, fetchArchetypes, fetchCards, ciao } from '../store'
+import { store, fetchArchetypes, fetchCards } from '../store'
 
 export default {
   data() {
