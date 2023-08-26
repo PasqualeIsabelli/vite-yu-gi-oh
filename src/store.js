@@ -21,19 +21,16 @@ export function fetchArchetypes () {
 export function fetchCards(nextUrl) {
   store.isLoading = true;
 
-  let urlNext = nextUrl ? nextUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
-  
+  let urlNext = "";
   
   console.log("next_page" + urlNext)
 
   if (store.searchArchetypes === "") {
     console.log("if")
-    let urlNext = nextUrl ? nextUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
-    
+    urlNext = nextUrl ? nextUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
   } else {
     console.log("else")
-    let urlNext = nextUrl ? nextUrl : `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.searchArchetypes}&num=20&offset=0`;
-    
+    urlNext = nextUrl ? nextUrl : `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.searchArchetypes}&num=20&offset=0`;
   }
 
   axios.get(urlNext).then((response) => {
@@ -44,4 +41,8 @@ export function fetchCards(nextUrl) {
       store.isLoading = false;
     }, 1000);
   });
+}
+
+export function ciao() {
+  console.log ("ciao")
 }
