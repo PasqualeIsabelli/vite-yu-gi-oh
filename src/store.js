@@ -7,12 +7,13 @@ export const store = reactive({
   paginationInfo: {},
   currentPage: 1,
   isLoading: false,
+  searchArchetypes: "Seleziona Archetipo"
 });
 
 export function fetchArchetypes () {
-  const urlArche = "https://db.ygoprodeck.com/api/v7/archetypes.php"
+  const urlArchetypes = "https://db.ygoprodeck.com/api/v7/archetypes.php"
 
-  axios.get(urlArche).then((response) => {
+  axios.get(urlArchetypes).then((response) => {
     store.archetypes = response.data;
   });
 }
@@ -23,6 +24,14 @@ export function fetchCards(nextUrl, prevUrl) {
   const urlNext = nextUrl ? nextUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
   const urlPrev = prevUrl ? prevUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
 
+  if (store.searchArchetypes === "Seleziona Archetipo") {
+    const urlNext = nextUrl ? nextUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
+    const urlPrev = prevUrl ? prevUrl : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
+  } else {
+    const urlNext = nextUrl ? nextUrl : `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.searchArchetypes}&num=20&offset=0`;
+    const urlPrev = prevUrl ? prevUrl : `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.searchArchetypes}&num=20&offset=0`;
+  }
+
   axios.get(urlNext, urlPrev).then((response) => {
     store.cards = response.data.data;
     store.paginationInfo = response.data.meta;
@@ -32,3 +41,4 @@ export function fetchCards(nextUrl, prevUrl) {
     }, 1000);
   });
 }
+

@@ -1,11 +1,14 @@
 <script>
-import { store, fetchArchetypes } from '../store'
+import { store, fetchArchetypes, fetchCards } from '../store'
 
 export default {
   data() {
     return {
       store,
     }
+  },
+  methods: {
+    fetchCards
   },
   mounted() {
     fetchArchetypes()
@@ -15,9 +18,9 @@ export default {
 
 
 <template>
-  <select class="form-select mb-4" aria-label="Default select example">
-    <option selected>Seleziona Tipologia</option>
-    <option :value="i" v-for="(archetype, i) in store.archetypes">{{ archetype.archetype_name }}</option>
+  <select class="form-select mb-4" aria-label="Default select example" v-model="store.searchArchetypes">
+    <option selected>Seleziona Archetipo</option>
+    <option :value="i + 1" v-for="(archetype, i) in store.archetypes" @click="fetchCards(store.searchArchetypes)">{{ archetype.archetype_name }}</option>
   </select>
 </template>
 
