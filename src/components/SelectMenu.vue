@@ -9,8 +9,7 @@ export default {
     }
   },
   methods: {
-    fetchCards,
-    ciao
+    fetchCards
   },
   mounted() {
     fetchArchetypes()

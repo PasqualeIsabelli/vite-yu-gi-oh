@@ -42,7 +42,3 @@ export function fetchCards(nextUrl) {
     }, 1000);
   });
 }
-
-export function ciao() {
-  console.log ("ciao")
-}
